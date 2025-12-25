@@ -11,9 +11,7 @@
 
 Meanwhile, check out our [Project Page](https://markus-42.github.io/publications/2026/occufly/).
 
-<video poster="" id="tree" autoplay muted loop height="100%" preload="metadata" style="width: 100%; height: auto;">
-    <source src="OccuFly_preview.mp4" type="video/mp4">
-</video>
+![Alt text](banner.png)
 
 ## 🚀 News
 - **[2025/12]:** [Project page](https://markus-42.github.io/publications/2026/occufly/) online
