@@ -22,11 +22,7 @@
 <sup>4</sup>
 [UCLA](https://mobility-lab.seas.ucla.edu/)
 
-
-<video poster="" id="tree" autoplay muted controls playsinline loop height="100%" preload="metadata" style="width: 100%; height: auto;">
-    <source src="./OccuFly.mp4" type="video/mp4">
-</video>
-<p style="margin-top: 0.5rem; font-size: 0.85rem; color: #ff840f;">Unmute for a 50 second summary.</p>
+![OccuFly.jpg](OccuFly.jpg)
 
 </div>
 
