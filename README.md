@@ -22,7 +22,7 @@
 <sup>4</sup>
 [UCLA](https://mobility-lab.seas.ucla.edu/)
 
-![OccuFly.jpg](OccuFly.jpg)
+![OccuFly.jpg](OccuFly.png)
 
 </div>
 
