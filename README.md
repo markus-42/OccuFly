@@ -6,6 +6,8 @@
 
 [![Project](https://img.shields.io/badge/Project-Page-blue.svg)](https://markus-42.github.io/publications/2026/occufly/)&nbsp;&nbsp;
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-red.svg)](https://arxiv.org/abs/2512.20770)
+[![OccuFly Dataset](https://img.shields.io/badge/%20-OccuFly%20Dataset-e58f00?logo=huggingface&logoColor=white&labelColor=555)](https://huggingface.co/datasets/markus-42/OccuFly)&nbsp;&nbsp;
+[![Aerial DepthAnything2](https://img.shields.io/badge/%20-Aerial%20DepthAnything2-e58f00?logo=huggingface&logoColor=white&labelColor=555)](https://huggingface.co/markus-42/OccuFly-DepthAnythingV2)
 
 [Markus Gross](https://markus-42.github.io/)<sup>1,2,3,<a href="mailto:markus.gross@tum.de?subject=IPFormer" style="color: #4799e0; text-decoration: underline;">📧</a></sup>,&nbsp;
 [Sai B. Matha](https://www.linkedin.com/in/saibharadhwajmatha/)<sup>1</sup>,&nbsp;
@@ -35,6 +37,8 @@
 🌐 Meanwhile, check out our [Project Page](https://markus-42.github.io/publications/2026/occufly/).
 
 ## 🚀 News
-- **[2026/02]:** OccuFly was accepted to CVPR 2026 for oral presentation 🥳
+- **[2026/06]:** [Aerial DepthAnything2](https://huggingface.co/markus-42/OccuFly-DepthAnythingV2) released on HuggingFace 🤗 
+- **[2026/06]:** [OccuFly](https://huggingface.co/datasets/markus-42/OccuFly) released on HuggingFace 🤗 
+- **[2026/02]:** OccuFly accepted to CVPR 2026 for oral presentation 🥳
 - **[2025/12]:** [Project page](https://markus-42.github.io/publications/2026/occufly/) online
 - **[2025/12]:** [Paper](https://arxiv.org/abs/2512.20770) available on arXiv
