@@ -11,7 +11,7 @@ Usage:
     python download_occufly.py --scenes 1 2 3
     python download_occufly.py --include_depth_predictions
     python download_occufly.py --only_depth_predictions
-    python download_occufly.py --output ./my_data
+    python download_occufly.py --output ./OccuFly
 """
 
 import sys
@@ -43,6 +43,9 @@ class OccuFlyDownloader:
         self.output_dir = Path(output_dir)
         self.dataset_id = dataset_id or self.DATASET_ID
         self.output_dir.mkdir(parents=True, exist_ok=True)
+        # Separate temp dir for downloaded zips before extraction
+        self.download_dir = self.output_dir / "_zip_downloads"
+        self.download_dir.mkdir(parents=True, exist_ok=True)
     
     def download_scene(self, scene_num):
         """Download a scene zip."""
@@ -58,7 +61,8 @@ class OccuFlyDownloader:
             zip_path = hf_hub_download(
                 repo_id=self.dataset_id,
                 filename=filename,
-                repo_type="dataset"
+                repo_type="dataset",
+                local_dir=str(self.download_dir)
             )
             
             print(f"[EXTRACT] Extracting {scene_name}...")
@@ -66,6 +70,10 @@ class OccuFlyDownloader:
                 z.extractall(self.output_dir)
             
             print(f"[OK] Scene extracted to: {self.output_dir / scene_name}")
+            
+            # Remove the downloaded zip to save space
+            Path(zip_path).unlink(missing_ok=True)
+            
             return True
         
         except Exception as e:
@@ -82,7 +90,8 @@ class OccuFlyDownloader:
             zip_path = hf_hub_download(
                 repo_id=self.dataset_id,
                 filename=filename,
-                repo_type="dataset"
+                repo_type="dataset",
+                local_dir=str(self.download_dir)
             )
             
             print(f"[EXTRACT] Extracting...")
@@ -90,11 +99,25 @@ class OccuFlyDownloader:
                 z.extractall(self.output_dir)
             
             print(f"[OK] Predictions extracted to: {self.output_dir}")
+            
+            # Remove the downloaded zip to save space
+            Path(zip_path).unlink(missing_ok=True)
+            
             return True
         
         except Exception as e:
             print(f"[ERROR] Failed to download predictions: {e}")
             return False
+    
+    def cleanup_download_dir(self):
+        """Remove the temporary download directory if empty/no longer needed."""
+        try:
+            # Remove any remaining files/folders in _zip_downloads
+            import shutil
+            if self.download_dir.exists():
+                shutil.rmtree(self.download_dir)
+        except Exception as e:
+            print(f"[WARN] Could not clean up download dir: {e}")
 
 
 def main():
@@ -171,6 +194,9 @@ def main():
         # Download depth predictions if requested
         if args.include_depth_predictions:
             downloader.download_depth_predictions()
+    
+    # Clean up temp download directory
+    downloader.cleanup_download_dir()
     
     print("\n" + "=" * 80)
     if success:

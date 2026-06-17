@@ -51,69 +51,6 @@ Semantic Scene Completion (SSC) is essential for 3D perception in mobile robotic
 # 2. Download OccuFly Dataset
 OccuFly is hosted on Hugging Face: [OccuFly Dataset](https://huggingface.co/datasets/markus-42/OccuFly). To download it, follow these steps:
 
-#### Install Dependencies:
-
-```bash
-pip install huggingface-hub tqdm numpy Pillow
-```
-
-#### Download Dataset:
-
-Use `src/download_occufly.py` to download the dataset. There are multiple options:
-
-
-```bash
-# Download all scenes
-python download_occufly.py
-
-# Download specific split
-python download_occufly.py --split train
-python download_occufly.py --split validation
-python download_occufly.py --split test
-
-# Download specific scenes (1-9)
-python download_occufly.py --scenes 1 2 3
-
-# Include predicted depth maps
-python download_occufly.py --include_depth_predictions
-python download_occufly.py --split train --include_depth_predictions
-
-# Download only predicted depth maps
-python download_occufly.py --only_depth_predictions
-
-# Custom output directory
-python download_occufly.py --output ./my_data
-```
-
-
-# 3. OccuFly Dataset Documentation
-
-<p align="center">
-    <img src="assets/occufly_dataset.gif" alt="OccuFly GIF" width="750" />
-</p>
-
-For detailed documentation, check the following readme files:
-
-- **[Dataset Notes](docs/dataset_notes.md)**: Overall attributes, and technical specifications of the voxel grid, semantic classes, coordinate system, grid indexing, and missing frames.
-- **[Directory Structure](docs/directory_structure.md)**: Dataset splits, and an overview of the dataset folder organization across scenes, altitudes, and data types.
-- **[File Descriptions](docs/file_description.md)**: Detailed documentation of each file format, including ground truth-files, preprocessed data, and calibration information.
-
-
-
-# 4. Aerial Depth Estimation
-
-For metric monocular depth estimation, we provide a fine-tuned checkpoint of [Depth Anything V2](https://github.com/DepthAnything/Depth-Anything-V2) that predicts absolute depth values (in meters) from single aerial RGB images captured at varying flight altitudes (30m, 40m, 50m). The model is fine-tuned on OccuFly depth maps.
-
-**Note** that we provide predicted depth maps from this model already in the dataset. In other words, you don´t need to infer OccuFly depth maps yourself.
-
-If you want to infer other images than OccuFly, then **find the model and instructions on Hugging Face**: [markus-42/OccuFly-DepthAnythingV2](https://huggingface.co/markus-42/OccuFly-DepthAnythingV2)
-
-
-
-# 5. Visualization Tool
-
-We provide a tool that visualizes images, depth maps, and ground-truth semantic voxel grids (including surface, occluded, and invalid masks). To run it, follow these steps:
-
 ### Prerequisites
 - Python >= 3.9
 
@@ -126,23 +63,78 @@ We provide a tool that visualizes images, depth maps, and ground-truth semantic 
     ```
 
 2. Create a virtual environment (optional but recommended):
+The following instructions use `uv` for virtual environment management on Ubuntu, but you can use `venv`, `conda`, or any other tool of your choice.
+
     ```bash
-    python -m venv venv
-    # On Windows
-    venv\Scripts\activate
-    # On macOS/Linux
-    source venv/bin/activate
+    uv init --no-workspace
+    uv venv --python=3.10 # any Python >= 3.9 version should work
+    source .venv/bin/activate
     ```
 
 3. Install the required dependencies:
     ```bash
-    pip install -r requirements.txt
+    uv pip install -r requirements.txt
     ```
 
-4. Install Open3D:
+#### Download Dataset:
 
-    Open3D requires specific installation steps. Please follow the official instructions at:
-    [https://www.open3d.org/docs/0.19.0/getting_started.html](https://www.open3d.org/docs/0.19.0/getting_started.html)
+Use `src/download_occufly.py` to download the dataset. There are multiple options:
+
+```bash
+# Download all scenes
+uv run src/download_occufly.py
+
+# Download specific split
+uv run src/download_occufly.py --split train
+uv run src/download_occufly.py --split validation
+uv run src/download_occufly.py --split test
+
+# Download specific scenes (1-9)
+uv run src/download_occufly.py --scenes 1 2 3
+
+# Include predicted depth maps
+uv run src/download_occufly.py --include_depth_predictions
+uv run src/download_occufly.py --split train --include_depth_predictions
+
+# Download only predicted depth maps
+uv run src/download_occufly.py --only_depth_predictions
+
+# Custom output directory
+uv run src/download_occufly.py --output ./my_data
+```
+
+# 3. OccuFly Dataset Documentation
+
+<p align="center">
+    <img src="assets/occufly_dataset.gif" alt="OccuFly GIF" width="750" />
+</p>
+
+For detailed documentation, check the following readme files in `docs/`:
+
+- **[Dataset Notes](docs/dataset_notes.md)**: Overall attributes, and technical specifications of the voxel grid, semantic classes, coordinate system, grid indexing, and missing frames.
+- **[Directory Structure](docs/directory_structure.md)**: Dataset splits, and an overview of the dataset folder organization across scenes, altitudes, and data types.
+- **[File Descriptions](docs/file_description.md)**: Detailed documentation of each file format, including ground truth-files, preprocessed data, and calibration information.
+- **[Hardware and Sensor Stack](docs/sensor_stack.md)**: Information about the UAV platforms, cameras used for data collection, and the 3D reconstruction pipeline.
+
+# 4. Aerial Depth Estimation
+
+For metric monocular depth estimation, we provide a fine-tuned checkpoint of [Depth Anything V2](https://github.com/DepthAnything/Depth-Anything-V2) that predicts absolute depth values (in meters) from single aerial RGB images captured at varying flight altitudes (30m, 40m, 50m). The model is fine-tuned on OccuFly depth maps.
+
+**Note** that we provide predicted depth maps from this model already in the dataset. In other words, you don´t need to infer OccuFly depth maps yourself.
+
+If you want to infer other images than OccuFly, then **find the model and instructions on Hugging Face**: [markus-42/OccuFly-DepthAnythingV2](https://huggingface.co/markus-42/OccuFly-DepthAnythingV2)
+
+
+# 5. Visualization Tool
+
+We provide a tool that visualizes images, depth maps, and ground-truth semantic voxel grids (including surface, occluded, and invalid masks). To run it, follow these steps:
+
+### Setup
+
+1. Set up the virtual environment as per section [2. Download OccuFly Dataset](#2-download-occufly-dataset)
+
+2. Install Open3D:<br>
+    Open3D requires specific installation steps. Please follow the official instructions at: [https://www.open3d.org/docs/0.19.0/getting_started.html](https://www.open3d.org/docs/0.19.0/getting_started.html).
 
 
 ### Usage
@@ -150,14 +142,14 @@ We provide a tool that visualizes images, depth maps, and ground-truth semantic 
 **Run the Script:**
 
 ```bash
-python src/visualize_gt.py --base_dir /path/to/OccuFly --scene scene_01 --altitude 30 --frame 000000
+uv run src/visualize_gt.py --base_dir /path/to/OccuFly --scene scene_01 --altitude 30 --frame 000000
 ```
 - `--base_dir` (required): Path to the OccuFly root directory containing the `OccuFly_Dataset` folder
 - `--scene` (optional, default: scene_01): Scene identifier (e.g., scene_01, scene_02, ...)
 - `--altitude` (optional, default: 30): Flight altitude in meters (choices: 30, 40, 50)
 - `--frame` (optional, default: 000000): Frame ID with zero-padding (e.g., 000000, 000001, ...)
 
-**Features**:
+**Features**:<br>
 - Left panel: RGB image and depth map visualization
 - Right panel: Interactive 3D voxel grid rendering
 - Mask switching: Toggle between surface, occluded, invalid, and occupancy masks
