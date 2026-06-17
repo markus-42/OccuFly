@@ -100,7 +100,7 @@ uv run src/download_occufly.py --split train --include_depth_predictions
 uv run src/download_occufly.py --only_depth_predictions
 
 # Custom output directory
-uv run src/download_occufly.py --output ./my_data
+uv run src/download_occufly.py --output ./OccuFly
 ```
 
 # 3. OccuFly Dataset Documentation
