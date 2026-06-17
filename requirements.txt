@@ -1,3 +1,6 @@
 numpy
 opencv-python
 matplotlib
+huggingface-hub
+tqdm
+Pillow
