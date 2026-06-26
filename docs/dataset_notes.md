@@ -81,7 +81,7 @@ See below, or refer to the [OccuFly Paper (incl. the appendix)](https://arxiv.or
 Each scene covers 30m, 40m, and 50m heights
 
 
-## Missing Frames:
+## Missing Frames
 Due to insufficient ground-truth and predicted depth for certain frames, a small number of samples were removed during dataset preparation. The enumerated files in the dataset have discontinuities at the following locations:
 
 | Scene     | Altitude | Missing Frame |
