@@ -16,6 +16,7 @@ The directory structure for the OccuFly project is as follows:
 OccuFly/
 ├── OccuFly_Dataset/
 │   ├── scene_01/                        # Training scene 1
+│   │   ├── calibration.txt              # Camera calibration parameters
 │   │   ├── 30/                          # 30 meters altitude
 │   │   │   ├── ground_truth/            # Raw voxel grid outputs
 │   │   │   │   ├── 000000/              # Frame 000000
@@ -41,8 +42,6 @@ OccuFly/
 │   │   │   ├── depth_maps/              # Depth maps (flattened, in meters, 1/4 resolution of images)
 │   │   │   │   ├── 000000.npy
 │   │   │   │   └── ...
-│   │   │   │
-│   │   │   └── calibration.txt          # Camera calibration parameters
 │   │   │
 │   │   ├── 40/                          # 40 meters altitude
 │   │   │   └── (same structure as 30/)
