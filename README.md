@@ -29,6 +29,8 @@
 </div>
 
 # News 🚀
+- **[2026/11]:** 📢 [MultiFly dataset](https://markus-42.github.io/multifly/) released: A real-world multimodal aerial dataset with RGB, thermal, LiDAR, Radar. 
+- **[2026/07]:** 📢 [SegFly dataset](https://markus-42.github.io/publications/2026/segfly/) released: Extends OccuFly with thermal images and 2D semantic labels. 
 - **[2026/06]:** [Aerial DepthAnything2](https://huggingface.co/markus-42/OccuFly-DepthAnythingV2) released on HuggingFace 🤗 
 - **[2026/06]:** [OccuFly](https://huggingface.co/datasets/markus-42/OccuFly) released on HuggingFace 🤗 
 - **[2026/02]:** OccuFly accepted to CVPR 2026 for oral presentation 🥳
@@ -41,8 +43,9 @@
 3. [OccuFly Dataset Documentation](#3-occufly-dataset-documentation)
 4. [Aerial Depth Estimation](#4-aerial-depth-estimation)
 5. [Visualization Tool](#5-visualization-tool)
-6. [Citation](#6-citation)
-7. [License](#7-license)
+7. [Other Datasets](#6-other-datasets)
+7. [Citation](#7-citation)
+8. [License](#8-license)
 
 # 1. Abstract
 
@@ -166,7 +169,14 @@ Ensure your dataset is organized according to the [Directory Structure](docs/dir
 </div>
 
 
-# 6. Citation
+# 6. Other Datasets
+- **[SegFly](https://markus-42.github.io/publications/2026/segfly/) [ECCV 2026]:** Extends OccuFly with 2D semantic maps, additional RGB-thermal image pairs, and corresponding semantic labels.
+
+- **[MultiFly](https://markus-42.github.io/multifly/):** A separate real-world multimodal aerial dataset with RGB-thermal-LiDAR-Radar modalities and cross-modal semantic consistency.
+
+
+
+# 7. Citation
 
 If this repository or our work was helpful to you,  we would appreciate citing our paper and giving the repository a star ⭐
 
@@ -179,6 +189,6 @@ If this repository or our work was helpful to you,  we would appreciate citing o
 }
 ```
 
-# 7. License
+# 8. License
 
 This work is licensed under the [CC BY-NC-SA 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/). See the LICENSE file for the full legal terms.
